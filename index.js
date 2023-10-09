@@ -13,6 +13,14 @@ async function dbconnect(){
         console.log(e)
     }
 }
-dbconnect()
-app.use("/",userRoutes)
-app.listen(5000,()=>console.log("server is runnig 5000"))
+async function startServer() {
+    try {
+      const db = await dbconnect();
+      app.use("/",userRoutes)
+      app.listen(5000, () => console.log('Server is running on port 5000'));
+    } catch (error) {
+      console.error('Error starting the server:', error);
+    }
+  }
+  
+  startServer(); 

@@ -229,8 +229,7 @@ async function findUserwith_yearGrad_after2015_and_exp_greaterthan1(req,res){
 }
 async function update(req,res){
     try{
-        // const result=await collection.findOne({name:"node",class:'mongodb'})
-        const result=await collection.updateMany({salary:{$gt:'70000'},$set:{salary:'65000'}})
+        const result=await collection.updateMany({ "salary": { $gte: "70000" } },{ $set: { "salary": "65000" } })
         console.log(result)
         res.send({user:result})
     } 
